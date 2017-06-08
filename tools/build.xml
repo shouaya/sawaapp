@@ -1,0 +1,13 @@
+<project default="compile">
+    <target name="compile">
+        <mkdir dir="../bin"/>
+        <javac target="1.8" encoding="utf-8" srcdir="../src" destdir="../bin" includeantruntime="on">
+        	<classpath>
+    	        <pathelement path="../lib/sawa.jar"/>
+    	    </classpath>
+    	</javac>
+    	<copy todir="../bin">
+    	    <fileset dir="../resources" includes="**/*.*" />
+    	</copy>
+    </target>
+</project>
