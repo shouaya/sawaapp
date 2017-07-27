@@ -4,6 +4,8 @@ host: api.9jialu.com
 
 debug: true
 
+chatable: false
+
 maxPost: 10
 
 packageDao: com.jialu.minios.dao
