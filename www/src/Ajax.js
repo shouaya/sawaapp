@@ -1,4 +1,4 @@
-const API_PATH = '/'
+const API_PATH = '/api/'
 const headers = {'Content-Type': 'application/json'}
 function _networkDone(res) {
     if (!res['err_code']) {
@@ -39,11 +39,10 @@ function ajaxPost({url, data}) {
 
 function ajaxError(res){
 	alert(res.statusText)
-	if(res.status === 403){
+	if(res.status === 403 || res.status === 401){
 		//TODO not refresh use react-route
-		location.href = "/"
+		location.href = "/#login"
 	}
-	console.log(res)
 }
 
 function login(phone, pass){
@@ -134,12 +133,42 @@ function removeItem(name, id){
     return promise
 }
 
+function search(name){
+    let promise = new Promise(function(reject){
+        ajaxGet({
+            url: 'search/query?name=' + name,
+        }).then(res => {
+            reject(res)
+        }).catch(res => ajaxError(res));
+    })
+    return promise
+}
+
+function saveas(data){
+    let promise = new Promise(function(reject){
+        ajaxPost({
+            url: 'search/saveas',
+            data: data
+        }).then(res => {
+            if(res.code === "OK"){
+                sessionStorage.clear();
+                reject(res.data);
+            }else{
+                alert(res.msg)
+            }
+        }).catch(res => ajaxError(res));
+    })
+    return promise
+}
+
 const Resource = {
   list: getList,
   save: updateItem,
   remove: removeItem,
   login: login,
-  regist: regist
+  regist: regist,
+  search: search,
+  saveas: saveas
 };
 
 export default Resource;

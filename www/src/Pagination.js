@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Menu, Icon } from 'semantic-ui-react'
+import { Menu, Icon, Input } from 'semantic-ui-react'
 
 class Pagination extends Component {
   
   constructor (props) {
 	super(props)
-    this.state = {totalPage: 0, currentPage: 1, show: false};
+    this.state = {totalPage: 0, currentPage: 1, show: false, inputPage: 1};
   }
   
   componentWillMount(){
@@ -20,7 +20,7 @@ class Pagination extends Component {
   
   handlePageClick(action){
 	  if(action === "left"){
-		  let pageNo = this.state.currentPage - 1
+		  let pageNo = parseInt(this.state.currentPage, 10) - 1
 		  if(this.state.currentPage - 1 <= 0){
 			  pageNo = this.state.currentPage
 			  return
@@ -31,14 +31,17 @@ class Pagination extends Component {
 			  this.props.onPageChange(this.state.currentPage);
 		  })
 	  }else if(action === "right"){
-		  let pageNo = this.state.currentPage + 1
+		  let pageNo = parseInt(this.state.currentPage, 10) + 1
+		  console.log(pageNo)
 		  if(this.state.currentPage + 1 > this.state.totalPage){
 			  pageNo = this.state.totalPage
 			  return
 		  }
+		  
 		  this.setState({
 			  currentPage : pageNo,
 		  },function () {
+			  
 			  this.props.onPageChange(this.state.currentPage);
 		  })
 	  }else{
@@ -49,19 +52,32 @@ class Pagination extends Component {
 		  })
 	  }
   }
+  handlePageNoChange(event){
+	  this.setState({
+		  inputPage : event.target.value
+	  })
+  }
+  handlePageChange(event){
+	  window.location.hash = "#page=" + this.state.inputPage
+	  this.setState({
+		  currentPage : parseInt(this.state.inputPage, 10),
+	  },function () {
+		  this.props.onPageChange(this.state.currentPage);
+	  })
+  }
   
   render() {
 	if(!this.state.show) return null
 	const items = [];
 	if(this.state.totalPage > 5){
-		//page 1
+		// page 1
 		items.push(<Menu.Item as='a' 
 			active={1 === this.state.currentPage} 
 			key={1}
 			onClick={this.handlePageClick.bind(this, 1 )}
 		>1</Menu.Item>)
 		if(this.state.currentPage <= 2){
-			//case 1
+			// case 1
 			items.push(<Menu.Item as='a' 
 				active={2 === this.state.currentPage} 
 				key={2}
@@ -69,7 +85,7 @@ class Pagination extends Component {
 			>2</Menu.Item>)
 			items.push(<Menu.Item as='a' key={0}>...</Menu.Item>)
 		}else if(this.state.currentPage >= this.state.totalPage - 1){
-			//case 2
+			// case 2
 			items.push(<Menu.Item as='a' key={0}>...</Menu.Item>)
 			items.push(<Menu.Item as='a' 
 				active={this.state.totalPage - 1 === this.state.currentPage} 
@@ -77,7 +93,7 @@ class Pagination extends Component {
 				onClick={this.handlePageClick.bind(this, this.state.totalPage - 1 )}
 			>{this.state.totalPage - 1}</Menu.Item>)
 		}else{
-			//case 3
+			// case 3
 			items.push(<Menu.Item as='a' key={-1}>...</Menu.Item>)
 			items.push(<Menu.Item as='a' 
 				active={true} 
@@ -86,7 +102,7 @@ class Pagination extends Component {
 			>{this.state.currentPage}</Menu.Item>)
 			items.push(<Menu.Item as='a' key={-2}>...</Menu.Item>)
 		}
-		//page end
+		// page end
 		items.push(<Menu.Item as='a' 
 			active={this.state.totalPage === this.state.currentPage} 
 			key={this.state.totalPage}
@@ -102,7 +118,7 @@ class Pagination extends Component {
 		}
 	}
     return (
-    <Menu floated='right' pagination>
+    <Menu pagination>
         <Menu.Item as='a' icon onClick={this.handlePageClick.bind(this, "left")}>
           <Icon name='left chevron' />
         </Menu.Item>
@@ -110,6 +126,12 @@ class Pagination extends Component {
         <Menu.Item as='a' icon onClick={this.handlePageClick.bind(this, "right")}>
           <Icon name='right chevron' />
         </Menu.Item>
+        <Menu.Item icon >
+          <Input size='mini' value={this.state.inputPage} 
+          		placeholder='goto page' 
+          		onChange={this.handlePageNoChange.bind(this)} 
+                action={{ icon: 'right chevron', onClick:this.handlePageChange.bind(this)}} />
+        </Menu.Item>        
       </Menu>
     );
   }

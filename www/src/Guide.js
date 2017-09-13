@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment, Form, Step, Divider, Header, Modal, Icon, Button, Label, Input, Loader} from 'semantic-ui-react'
+import { Container, Segment, Form, Step, Divider, Header, Modal, Icon, Button, Label, Input, Loader, Image} from 'semantic-ui-react'
 import Resource from './Ajax.js';
 class Guide extends Component {
 
@@ -46,9 +46,9 @@ class Guide extends Component {
 	const { phone, pass } = this.state
     return (
 	<div className="body">
-		<Header as='h1'>KPF</Header>
+		<Header><Image src='https://s3-ap-northeast-1.amazonaws.com/ms17222/whale64.png' size='tiny' wrapped verticalAlign='bottom'/><span>クジラ-データ</span></Header>
 		<Divider />
-		<Segment color='yellow'>
+		<Segment color='blue'>
 	      <Container>
 		    <Form onSubmit={this.handleLogin}>
 		      <Form.Group>

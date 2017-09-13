@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Resource from './Ajax.js';
 import Pagination from './Pagination.js';
+import SearchItem from './SearchItem.js';
 import {Table, Button, Segment, Header, Icon, Modal, Input, Label } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
@@ -8,7 +9,13 @@ class MiniPage extends Component {
 	
   constructor (props) {
 	super(props)
-    this.state = {list: [], modalOpen: false, currentItem: {}, action: '', totalPage:1, currentPage:1, isLoading:true };
+	let page = window.location.hash.replace("#page=","")
+	if(page !== ""){
+		this.state = {list: [], modalOpen: false, currentItem: {}, action: '', totalPage:1, currentPage:page, isLoading:true };
+	}else{
+		this.state = {list: [], modalOpen: false, currentItem: {}, action: '', totalPage:1, currentPage:1, isLoading:true };
+	}
+    
 	this.handleItemView = (item) => this.setState({
 	    modalOpen: true,
 	    currentItem : item,
@@ -56,8 +63,17 @@ class MiniPage extends Component {
 	      currentItem: item,
 	    })
 	}
+	
+	this.onSearchChange = (pro, data) => {
+	    let item = this.state.currentItem
+	    item[pro] = data
+	    this.setState({
+	      currentItem: item,
+	    })
+	}
 	  
 	this.handlePageClick = (pageNo) =>{
+		window.location.href = "/" + this.props.name + "#page=" + pageNo
 	    this.getList(pageNo);
 	}
   }
@@ -89,9 +105,35 @@ class MiniPage extends Component {
     const renderRow = (row) => {
     	return this.props.column.map((item) => {
 	    	if (item.type === "obj"){
-	            return <Table.Cell key={row.id + item.name}><Link to={'/' + item.name + '?id=' + row[item.ref] }><Button icon='linkify'/></Link></Table.Cell>
+	    		if(row[item.ref]){
+	            	return <Table.Cell key={row.id + item.name}><Link to={'/' + item.name + '?id=' + row[item.ref] }><Button icon='linkify'/></Link></Table.Cell>
+	            }else{
+	            	return <Table.Cell key={row.id + item.name}></Table.Cell>
+	            }
 	        }else if(item.type === "list"){
-	            return <Table.Cell key={row.id + item.name}><Link to={'/' + item.name + '?' + item.ref + '=' + row.id }><Button icon='list'/></Link></Table.Cell>
+	        	if(row.id && row[item.name].length >= 1){
+	        		if(row[item.name][0].url){
+	        			return (
+	        				<Table.Cell key={row.id + item.name}>
+	        					<Link to={'/' + item.name + '?' + item.ref + '=' + row.id }>
+	        						<Button icon='list'/>
+	        					</Link>
+	        					<a　href={row[item.name][0].url} target='_blank'>
+	        						<Icon name='share' />
+	        					</a>
+	        				</Table.Cell>		
+	        			)
+	        		}
+	            	return(
+	            		<Table.Cell key={row.id + item.name}>
+	            			<Link to={'/' + item.name + '?' + item.ref + '=' + row.id }>
+	            				<Button icon='list'/>
+	            			</Link>
+	            		</Table.Cell>
+	            	)
+	            }else{
+	            	return <Table.Cell key={row.id + item.name}></Table.Cell>
+	            }
 	        }else{
 	            return <Table.Cell key={row.id + item.name}>{ row[item.name] }</Table.Cell>
 	        }
@@ -110,13 +152,6 @@ class MiniPage extends Component {
       </Table.Row>
     );
 
-    const cnt = 10 - listItems.length;
-    if(listItems.length < 10){
-      for(var i=0;i<cnt;i++){
-        listItems.push(<Table.Row key={"dummy"+i}><Table.Cell><Button icon='minus'/></Table.Cell></Table.Row>)
-      }
-    }
-    
     const segmentItems = this.props.column.map((item) => {
     if(item.type === "obj" || item.type === "list") return null
     return (
@@ -126,9 +161,11 @@ class MiniPage extends Component {
           if (this.state.action === "view"){
             return <Segment padded>{ this.state.currentItem[item.name] }</Segment>
           }else if(this.state.action === "create"){
+            if(item.name.endsWith("_id")){return <SearchItem col={item.name} onSearchChange={ this.onSearchChange.bind(this, item.name) }/>}
             return <Input
             onChange={ this.handleItemChange.bind(this, item.name) }/>
           }else if(this.state.action === "edit"){
+            if(item.name.endsWith("_id")){return <SearchItem col={item.name} onSearchChange={ this.onSearchChange.bind(this, item.name) } value={this.state.currentItem[item.name]} />}
             return <Input
               value={ this.state.currentItem[item.name] } 
               onChange={ this.handleItemChange.bind(this, item.name) }/>
@@ -142,7 +179,7 @@ class MiniPage extends Component {
     });
     return (
     <Segment color='blue'>
-      <Table basic='very' celled collapsing>
+      <Table basic='very' celled collapsing selectable>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell><Label as='a' color='teal' ribbon>{this.props.title}</Label></Table.HeaderCell>
@@ -160,7 +197,7 @@ class MiniPage extends Component {
               new
             </Button>
           </Table.HeaderCell>
-          <Table.HeaderCell colSpan='20'>
+          <Table.HeaderCell colSpan='10'>
             <Pagination 
               pageNo={this.state.currentPage}
               pageCount={this.state.totalPage} 
