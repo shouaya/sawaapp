@@ -3,12 +3,26 @@
 	"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 	
 <hibernate-mapping>
-	<query name="find_user_by_phone">
-	    <![CDATA[FROM MiniUserModel e WHERE e.phone = :phone ORDER BY e.id]]>
-    </query>
-
-	<query name="find_user_by_phone_and_token">
-		<![CDATA[FROM MiniUserModel e WHERE e.phone = :phone and e.token = :token ORDER BY e.id]]>
+	<query name="getCorporationByNumber">
+		<![CDATA[FROM MstCorporationModel e WHERE e.corporateNumber = :corporateNumber]]>
+	</query>
+	<query name="getCompanyByName">
+		<![CDATA[FROM WdCompanyModel e WHERE e.name = :name]]>
+	</query>
+	<query name="getCompanyByCorporateNumber">
+		<![CDATA[select e FROM WdCompanyModel e inner join e.corporation as corporation WHERE e.corporation.corporateNumber = :corporateNumber]]>
 	</query>
 	
+	<query name="getTagByName">
+		<![CDATA[select e FROM MstTagModel e where e.deleted = 0 and e.name = :name]]>
+	</query>
+	<query name="getCotagByCidAndTagid">
+		<![CDATA[select e FROM WdCotagModel e where e.deleted = 0 and e.company_id = :cid and e.tag_id = :tid]]>
+	</query>
+	<query name="wd_cotag-cid">
+		<![CDATA[select e FROM WdCotagModel e inner join e.tag as tag where e.deleted = 0 and e.company_id = :company_id ORDER BY e.point DESC]]>
+	</query>
+	<query name="wd_company-reportcapitaldesc">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 ORDER BY e.capital DESC]]>
+	</query>
 </hibernate-mapping>

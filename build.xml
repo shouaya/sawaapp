@@ -1,13 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project default="compile">
-    <target name="compile">
-        <mkdir dir="bin"/>
-        <javac target="1.8" encoding="utf-8" srcdir="src" destdir="bin" includeantruntime="on">
-        	<classpath>
+	<property name="src.dir" value="src"/>
+	<property name="out.dir" value="out"/>
+	<property name="bin.dir" value="bin"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="res.dir" value="resources"/>
+		
+	<property name="jarname" value="wd.jar"/>
+	<property name="mainclass" value="com.jialu.sawa.MiniApp"/>
+	
+	<path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+	
+    <target name="init">
+        <mkdir dir="${bin.dir}"/>
+        <mkdir dir="${out.dir}"/>
+    </target>
+	
+	<target name="clean">
+	   <delete dir="${bin.dir}"/>
+       <delete dir="${out.dir}"/>
+    </target>
+	
+    <target name="compile" depends="clean,init">
+        <javac target="1.8" encoding="utf-8" srcdir="${src.dir}" destdir="${bin.dir}" includeantruntime="on">
+			<classpath>
     	        <pathelement path="lib/sawa.jar"/>
     	    </classpath>
     	</javac>
-    	<copy todir="bin">
-    	    <fileset dir="resources" includes="**/*.*" />
+    	<copy todir="${bin.dir}">
+    	    <fileset dir="${res.dir}" includes="**/*.*" />
     	</copy>
+    </target>
+	
+	<manifestclasspath property="lib.list" jarfile="${out.dir}/${jarname}">
+	    <classpath refid="classpath"/>
+	</manifestclasspath>
+	
+	<target name="jar" depends="clean,compile">
+		<copy file="pro.yml" tofile="${out.dir}/pro.yml"/>
+        <jar destfile="${out.dir}/${jarname}" basedir="${bin.dir}">
+        	<zipfileset dir="${bin.dir}"/>
+        	<zipfileset src="${lib.dir}/sawa.jar" />
+            <manifest>
+                <attribute name="Main-class" value="${mainclass}"/>
+            </manifest>
+        </jar>
     </target>
 </project>

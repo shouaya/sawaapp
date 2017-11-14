@@ -4,235 +4,227 @@
 	
 <hibernate-mapping>	
 
-	<query name="eb_empolyee">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
+	<query name="wd_customer">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_empolyee-id">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
+	<query name="wd_customer-id">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_empolyee-cuser">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
+	<query name="wd_customer-cuser">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_empolyee-uuser">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
+	<query name="wd_customer-uuser">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_empolyee-deleted">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
+	<query name="wd_customer-deleted">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_empolyee-eb_id">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.eb_id = :eb_id ORDER BY e.utime DESC]]>
+    <query name="wd_customer-user_id">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.user_id = :user_id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_empolyee-user_id">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.user_id = :user_id ORDER BY e.utime DESC]]>
+    <query name="wd_customer-sei">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.sei LIKE :sei ORDER BY e.id]]>
 	</query>
-    <query name="eb_empolyee-kyuId">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.kyuId = :kyuId ORDER BY e.utime DESC]]>
+    <query name="wd_customer-mei">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.mei LIKE :mei ORDER BY e.id]]>
 	</query>
-    <query name="eb_empolyee-kyuName">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.kyuName = :kyuName ORDER BY e.utime DESC]]>
+    <query name="wd_customer-company">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.company LIKE :company ORDER BY e.id]]>
 	</query>
-    <query name="eb_empolyee-name">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.name = :name ORDER BY e.utime DESC]]>
+    <query name="wd_customer-mail">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.mail LIKE :mail ORDER BY e.id]]>
 	</query>
-    <query name="eb_empolyee-kana">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.kana = :kana ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-sex">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.sex = :sex ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-birthDate">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.birthDate = :birthDate ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-phone">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.phone = :phone ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-ebMailAddress">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.ebMailAddress = :ebMailAddress ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-mailAddress">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.mailAddress = :mailAddress ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-address">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.address = :address ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-postcode">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.postcode = :postcode ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-joinDate">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.joinDate = :joinDate ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_empolyee-departmentId">
-	  <![CDATA[FROM EbEmpolyeeModel e WHERE e.deleted = 0 and e.departmentId = :departmentId ORDER BY e.utime DESC]]>
+    <query name="wd_customer-phone">
+	  <![CDATA[FROM WdCustomerModel e WHERE e.deleted = 0 and e.phone LIKE :phone ORDER BY e.id]]>
 	</query>
 
-	<query name="eb_contract">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
+	<query name="wd_company">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_contract-id">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
+	<query name="wd_company-id">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_contract-cuser">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
+	<query name="wd_company-cuser">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_contract-uuser">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
+	<query name="wd_company-uuser">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_contract-deleted">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
+	<query name="wd_company-deleted">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_contract-eb_id">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.eb_id = :eb_id ORDER BY e.utime DESC]]>
+    <query name="wd_company-corporation_id">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.corporation_id = :corporation_id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_contract-contract_id">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.contract_id = :contract_id ORDER BY e.utime DESC]]>
+    <query name="wd_company-name">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.name LIKE :name ORDER BY e.id]]>
 	</query>
-    <query name="eb_contract-employerName">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.employerName = :employerName ORDER BY e.utime DESC]]>
+    <query name="wd_company-roma">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.roma LIKE :roma ORDER BY e.id]]>
 	</query>
-    <query name="eb_contract-employerType">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.employerType = :employerType ORDER BY e.utime DESC]]>
+    <query name="wd_company-buildDate">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.buildDate LIKE :buildDate ORDER BY e.id]]>
 	</query>
-    <query name="eb_contract-allowanceBase">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.allowanceBase = :allowanceBase ORDER BY e.utime DESC]]>
+    <query name="wd_company-capital">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.capital LIKE :capital ORDER BY e.id]]>
 	</query>
-    <query name="eb_contract-allowanceBaseMemo">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.allowanceBaseMemo = :allowanceBaseMemo ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_contract-allowanceCost">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.allowanceCost = :allowanceCost ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_contract-allowanceOther">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.allowanceOther = :allowanceOther ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_contract-allowanceOtherMemo">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.allowanceOtherMemo = :allowanceOtherMemo ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_contract-allowanceTicket">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.allowanceTicket = :allowanceTicket ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_contract-employmentDate">
-	  <![CDATA[FROM EbContractModel e WHERE e.deleted = 0 and e.employmentDate = :employmentDate ORDER BY e.utime DESC]]>
+    <query name="wd_company-business">
+	  <![CDATA[FROM WdCompanyModel e WHERE e.deleted = 0 and e.business LIKE :business ORDER BY e.id]]>
 	</query>
 
-	<query name="eb_attendance">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
+	<query name="wd_cocategory">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_attendance-id">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
+	<query name="wd_cocategory-id">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_attendance-cuser">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
+	<query name="wd_cocategory-cuser">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_attendance-uuser">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
+	<query name="wd_cocategory-uuser">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_attendance-deleted">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
+	<query name="wd_cocategory-deleted">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_attendance-eb_id">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.eb_id = :eb_id ORDER BY e.utime DESC]]>
+    <query name="wd_cocategory-company_id">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 and e.company_id = :company_id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_attendance-year">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.year = :year ORDER BY e.utime DESC]]>
+    <query name="wd_cocategory-priority">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 and e.priority = :priority ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_attendance-month">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.month = :month ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-days">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.days = :days ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-times">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.times = :times ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-overTimes">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.overTimes = :overTimes ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-nightDays">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.nightDays = :nightDays ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-traffic">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.traffic = :traffic ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-reimbursement">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.reimbursement = :reimbursement ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-remark">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.remark = :remark ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-status">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.status = :status ORDER BY e.utime DESC]]>
-	</query>
-    <query name="eb_attendance-reason">
-	  <![CDATA[FROM EbAttendanceModel e WHERE e.deleted = 0 and e.reason = :reason ORDER BY e.utime DESC]]>
+    <query name="wd_cocategory-category_id">
+	  <![CDATA[FROM WdCocategoryModel e WHERE e.deleted = 0 and e.category_id = :category_id ORDER BY e.utime DESC]]>
 	</query>
 
-	<query name="eb_salery">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
+	<query name="wd_page">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_salery-id">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
+	<query name="wd_page-id">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_salery-cuser">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
+	<query name="wd_page-cuser">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_salery-uuser">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
+	<query name="wd_page-uuser">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
 	</query>
-	<query name="eb_salery-deleted">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
+	<query name="wd_page-deleted">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-eb_id">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.eb_id = :eb_id ORDER BY e.utime DESC]]>
+    <query name="wd_page-company_id">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.company_id = :company_id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-kyuId">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.kyuId = :kyuId ORDER BY e.utime DESC]]>
+    <query name="wd_page-priority">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.priority = :priority ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-businessDate">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.businessDate = :businessDate ORDER BY e.utime DESC]]>
+    <query name="wd_page-title">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.title LIKE :title ORDER BY e.id]]>
 	</query>
-    <query name="eb_salery-kyuName">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.kyuName = :kyuName ORDER BY e.utime DESC]]>
+    <query name="wd_page-url">
+	  <![CDATA[FROM WdPageModel e WHERE e.deleted = 0 and e.url LIKE :url ORDER BY e.id]]>
 	</query>
-    <query name="eb_salery-wordDays">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.wordDays = :wordDays ORDER BY e.utime DESC]]>
+
+	<query name="wd_cotag">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-attendanceDays">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.attendanceDays = :attendanceDays ORDER BY e.utime DESC]]>
+	<query name="wd_cotag-id">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-baseSalary">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.baseSalary = :baseSalary ORDER BY e.utime DESC]]>
+	<query name="wd_cotag-cuser">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-notaxCommutingCosts">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.notaxCommutingCosts = :notaxCommutingCosts ORDER BY e.utime DESC]]>
+	<query name="wd_cotag-uuser">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-reimbursement">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.reimbursement = :reimbursement ORDER BY e.utime DESC]]>
+	<query name="wd_cotag-deleted">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-fieldAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.fieldAllowance = :fieldAllowance ORDER BY e.utime DESC]]>
+    <query name="wd_cotag-company_id">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 and e.company_id = :company_id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-normalOvertime">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.normalOvertime = :normalOvertime ORDER BY e.utime DESC]]>
+    <query name="wd_cotag-tag_id">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 and e.tag_id = :tag_id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-introductionAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.introductionAllowance = :introductionAllowance ORDER BY e.utime DESC]]>
+    <query name="wd_cotag-point">
+	  <![CDATA[FROM WdCotagModel e WHERE e.deleted = 0 and e.point = :point ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-dutyAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.dutyAllowance = :dutyAllowance ORDER BY e.utime DESC]]>
+
+	<query name="mst_tag">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-qualificationAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.qualificationAllowance = :qualificationAllowance ORDER BY e.utime DESC]]>
+	<query name="mst_tag-id">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-housingAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.housingAllowance = :housingAllowance ORDER BY e.utime DESC]]>
+	<query name="mst_tag-cuser">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-lateNightOvertime">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.lateNightOvertime = :lateNightOvertime ORDER BY e.utime DESC]]>
+	<query name="mst_tag-uuser">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-diligenceAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.diligenceAllowance = :diligenceAllowance ORDER BY e.utime DESC]]>
+	<query name="mst_tag-deleted">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
 	</query>
-    <query name="eb_salery-safetyAllowance">
-	  <![CDATA[FROM EbSaleryModel e WHERE e.deleted = 0 and e.safetyAllowance = :safetyAllowance ORDER BY e.utime DESC]]>
+    <query name="mst_tag-name">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = 0 and e.name LIKE :name ORDER BY e.id]]>
+	</query>
+    <query name="mst_tag-description">
+	  <![CDATA[FROM MstTagModel e WHERE e.deleted = 0 and e.description LIKE :description ORDER BY e.id]]>
+	</query>
+
+	<query name="mst_category">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_category-id">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_category-cuser">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_category-uuser">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_category-deleted">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
+	</query>
+    <query name="mst_category-code">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 and e.code LIKE :code ORDER BY e.id]]>
+	</query>
+    <query name="mst_category-name">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 and e.name LIKE :name ORDER BY e.id]]>
+	</query>
+    <query name="mst_category-description">
+	  <![CDATA[FROM MstCategoryModel e WHERE e.deleted = 0 and e.description LIKE :description ORDER BY e.id]]>
+	</query>
+
+	<query name="mst_corporation">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_corporation-id">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.id = :id ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_corporation-cuser">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.cuser = :cuser ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_corporation-uuser">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.uuser = :uuser ORDER BY e.utime DESC]]>
+	</query>
+	<query name="mst_corporation-deleted">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = :deleted ORDER BY e.utime DESC]]>
+	</query>
+    <query name="mst_corporation-corporateNumber">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.corporateNumber LIKE :corporateNumber ORDER BY e.id]]>
+	</query>
+    <query name="mst_corporation-name">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.name LIKE :name ORDER BY e.id]]>
+	</query>
+    <query name="mst_corporation-address">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.address LIKE :address ORDER BY e.id]]>
+	</query>
+    <query name="mst_corporation-lat">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.lat LIKE :lat ORDER BY e.id]]>
+	</query>
+    <query name="mst_corporation-lng">
+	  <![CDATA[FROM MstCorporationModel e WHERE e.deleted = 0 and e.lng LIKE :lng ORDER BY e.id]]>
 	</query>
 </hibernate-mapping>
