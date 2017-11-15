@@ -8,6 +8,7 @@
   <description>sawaapp</description>
   <url>https://github.com/shouaya/sawaapp.git</url>
   <build>
+    <sourceDirectory>src</sourceDirectory>
     <resources>
       <resource>
         <directory>resources</directory>
@@ -16,6 +17,7 @@
         </includes>
       </resource>
     </resources>
+    <finalName>sawaapp</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>

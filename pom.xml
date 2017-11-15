@@ -4,6 +4,7 @@
 	<groupId>com.github.shouaya</groupId>
 	<artifactId>sawaapp</artifactId>
 	<version>0.0.1</version>
+	<packaging>jar</packaging>
 	<name>sawaapp</name>
 	<description>sawaapp</description>
 	<properties>
@@ -17,6 +18,8 @@
 		</dependency>
 	</dependencies>
 	<build>
+	    <finalName>sawaapp</finalName>
+	    <sourceDirectory>src</sourceDirectory>
 		<resources>
 	      <resource>
 	        <directory>resources</directory>
