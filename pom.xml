@@ -17,6 +17,14 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<resources>
+	      <resource>
+	        <directory>resources</directory>
+	        <includes>
+	          <include>**/*.*</include>
+	        </includes>
+	      </resource>
+	    </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -47,7 +55,7 @@
 									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.jialu.minios.MiniApp</mainClass>
+									<mainClass>com.jialu.sawa.MiniApp</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

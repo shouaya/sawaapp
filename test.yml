@@ -1,4 +1,4 @@
-name: minios
+name: sawaapp
 host: localhost
 debug: true
 secure: false
@@ -8,10 +8,10 @@ useBaseRegist: true
 elastic: http://localhost:9200/whale_data/
 solr: http://localhost:8983/solr/%s/select
 
-packageDao: com.jialu.minios.dao
-packageModel: com.jialu.minios.model
-packageResource: com.jialu.minios.resource
-packageApi: com.jialu.minios.api
+packageDao: com.github.shouaya.sawaapp.dao
+packageModel: com.github.shouaya.sawaapp.model
+packageResource: com.github.shouaya.sawaapp.resource
+packageApi: com.github.shouaya.sawaapp.api
 
 defaultUserRole: USER
 defaultAdminRole: ADMIN
@@ -28,11 +28,11 @@ server:
   rootPath: /api/*
 
 logging:
-  level: DEBUG
+  level: INFO
   loggers:
-    io.dropwizard: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type: DEBUG
+    io.dropwizard: INFO
+    org.hibernate.SQL: INFO
+    org.hibernate.type: INFO
   appenders:
     - type: console
 

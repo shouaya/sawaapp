@@ -8,6 +8,14 @@
   <description>sawaapp</description>
   <url>https://github.com/shouaya/sawaapp.git</url>
   <build>
+    <resources>
+      <resource>
+        <directory>resources</directory>
+        <includes>
+          <include>**/*.*</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
@@ -22,7 +30,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>com.jialu.minios.MiniApp</mainClass>
+                  <mainClass>com.jialu.sawa.MiniApp</mainClass>
                 </transformer>
               </transformers>
             </configuration>
